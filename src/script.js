@@ -27,7 +27,7 @@ const material = new THREE.MeshStandardMaterial({
   color: "gray",
   map: texture,
   displacementMap: height,
-  displacementScale: .9,
+  displacementScale: 0.9,
   alphaMap: alpha,
   transparent: true,
   depthTest: false,
@@ -42,7 +42,7 @@ gui.add(plane.rotation, "x").min(0).max(300);
 
 // Lights
 
-const pointLight = new THREE.PointLight('#00b3ff', 3);
+const pointLight = new THREE.PointLight("#00b3ff", 3);
 pointLight.position.x = 2;
 pointLight.position.y = 10;
 pointLight.position.z = 4.4;
@@ -103,6 +103,7 @@ scene.add(camera);
  */
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
+  alpha: true,
 });
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -110,6 +111,14 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 /**
  * Animate
  */
+
+document.addEventListener("mousemove", animateTerrain);
+
+let mouseY = 0;
+
+function animateTerrain(event) {
+  mouseY = event.clientY;
+}
 
 const clock = new THREE.Clock();
 
@@ -119,7 +128,8 @@ const tick = () => {
   // Update objects
   //   sphere.rotation.y = 0.5 * elapsedTime;
 
-  plane.rotation.z = .7 * elapsedTime
+  plane.rotation.z = 0.7 * elapsedTime;
+  plane.material.displacementScale = 0.5 + mouseY * 0.0008;
   // Update Orbital Controls
   // controls.update()
 
