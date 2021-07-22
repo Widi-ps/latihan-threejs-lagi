@@ -61,13 +61,13 @@ gui.addColor(col, "color").onChange(() => {
  * Sizes
  */
 const sizes = {
-  width: window.innerWidth,
+  width: window.innerWidth * .5,
   height: window.innerHeight,
 };
 
 window.addEventListener("resize", () => {
   // Update sizes
-  sizes.width = window.innerWidth;
+  sizes.width = window.innerWidth * .5;
   sizes.height = window.innerHeight;
 
   // Update camera
