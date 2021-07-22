@@ -11,7 +11,7 @@ const texture = loader.load("/texture.jpg");
 const alpha = loader.load("/alpha.jpg");
 
 // Debug
-const gui = new dat.GUI();
+// const gui = new dat.GUI();
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
@@ -36,7 +36,7 @@ const material = new THREE.MeshStandardMaterial({
 const plane = new THREE.Mesh(geometry, material);
 scene.add(plane);
 plane.rotation.x = 181;
-gui.add(plane.rotation, "x").min(0).max(300);
+// gui.add(plane.rotation, "x").min(0).max(300);
 
 // Mesh
 
@@ -48,14 +48,14 @@ pointLight.position.y = 10;
 pointLight.position.z = 4.4;
 scene.add(pointLight);
 
-gui.add(pointLight.position, "x");
-gui.add(pointLight.position, "y");
-gui.add(pointLight.position, "z");
+// gui.add(pointLight.position, "x");
+// gui.add(pointLight.position, "y");
+// gui.add(pointLight.position, "z");
 
-const col = { color: "#00ff00" };
-gui.addColor(col, "color").onChange(() => {
-  pointLight.color.set(col.color);
-});
+// const col = { color: "#00ff00" };
+// gui.addColor(col, "color").onChange(() => {
+//   pointLight.color.set(col.color);
+// });
 
 /**
  * Sizes
